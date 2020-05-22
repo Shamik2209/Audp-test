@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <title>upload your audio</title>
+        {% load static %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Record, upload, share! SndUp is a social network, for audio! We enable you to upload audio clips and share them with the world. Sharing your talent is simple!"> {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static "Upload.css" %}">
+    </head>
+    <ul>
+        <li><a href = "/button/">HOME</a></li>
+        <li><a>ANALYSIS</a>
+        <ul>
+        <li><a href = "/upload/" >PITCH & FORMANT</a></li>
+        <li><a href= "/vow/" >VOWEL TRIANGLE</a></li>
+        <li><a href= "/deleteMedia/" >DELETE AUDIO</a></li>
+
+        </ul>
+    </li>
+    <li><a>CONTACT US</a>
+    <ul>
+        <li><a>NUMBER</a></li>
+        <li><a>EMAIL</a></li>
+        <li><a>LOCATION</a></li>
+
+    </ul>
+    </li>
+</li>
+    </ul>
+    <body>
+            <div class="page-header">
+                <center>
+                    <h1>Upload your audio sample(s)</h1>
+                </center>
+            </div>
+            <div class="container" role="main">
+                <form action="" method="post" enctype="multipart/form-data" name="upload" id="upload" role="form">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="file">File to upload:</label>
+                        <input name="audio" type="file" class="form-control" id="input" size="30" required/>
+                    </div>
+                    <input name="Submit" type="submit" class="btn-default" id="submit" formaction= "/external/" value="PITCH & FORMANT!" />
+                </form>
+                <audio id="sound" controls></audio>
+                <script src="{% static "upload.js" %}"></script>
+            </div>
+        {% if data %} {{data | safe}} {% endif %}
+            <br><br> {% if raw_url or edit_url %}
+            <span>
+<div class="pdf">
+  REPORT:
+  <embed src="/media/report1.pdf" width="500px" height="575px"/>
+</div>
+</span>
+            <hr> {% endif %}
+    </body>
+
+    </html>

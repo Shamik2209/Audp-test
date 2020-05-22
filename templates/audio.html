@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SPEECH ANALYSIS</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static "audio.css" %}">
+</head>
+<body>
+    <div class="page-header">
+        <center>
+            <h1>Upload your audio sample(s)</h1>
+        </center>
+    </div>
+    <div class="container" role="main">
+        <form action= "/ttll/" method="post" enctype="multipart/form-data" name="upload" id="upload" role="form">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="file">File to upload:</label>
+                <input name="files" type="file" class="form-control" id="input" size="30" required/>
+            </div>
+            <input name="Submit" type="submit" class="btn-default" id="submit" value="PREDICT GENDER!"/>
+        </form>
+        <audio id="sound" controls></audio>
+        <script src="{% static "upload.js" %}"></script>
+        <div class="tag">
+        <br><br>
+        {{prediction}}
+    </div>
+    </div>
+</body>
+</html>

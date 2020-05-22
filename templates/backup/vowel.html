@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static "vowel.css" %}">
+</head>
+<ul>
+    <li><a href = "/button/">HOME</a></li>
+    <li><a>ANALYSIS</a>
+    <ul>
+    <li><a href = "/upload/" >PITCH & FORMANT</a></li>
+    <li><a href= "/vow/" >VOWEL TRIANGLE</a></li>
+    <li><a href= "/deleteMedia/" >DELETE AUDIO</a></li>
+
+    </ul>
+</li>
+<li><a>CONTACT US</a>
+<ul>
+    <li><a>NUMBER</a></li>
+    <li><a>EMAIL</a></li>
+    <li><a>LOCATION</a></li>
+
+</ul>
+</li>
+</li>
+</ul>
+<body>
+    <div class="page-header">
+            <center>
+                <h1>Upload your audio sample(s)</h1>
+            </center>
+        </div>
+        <div class="container" role="main">
+            <form action="" method="post" enctype="multipart/form-data" name="upload" id="upload" role="form">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="file">Files to upload:</label>
+                    <input name="audio" type="file" class="form-control" id="input" size="30" required/>
+                    <input name="audio1" type="file" class="form-control1" id="input1" size="30" required/>
+                    <input name="audio2" type="file" class="form-control2" id="input2" size="30" required/>
+                </div>
+                <input name="Submit" type="submit" class="btn-default" id="submit" formaction= "/el/" value="Submit!" />
+            </form>
+            <div class="duration">
+            <audio id="sound" controls></audio>
+            <audio id="sound1" controls></audio>
+            <audio id="sound2" controls></audio>
+            <script src="{% static "vowel.js" %}"></script>
+        </div>
+        </div>
+    <div>
+        {% if data %} {{data | safe}} {% endif %}
+        <br><br> {% if raw_url or edit_url %}
+        <span>
+<div class="pdf">
+<embed src="/media/report1.pdf" width="500px" height="575px"/>
+</div>
+</span>
+    <hr> {% endif %}
+</body>
+</html>
