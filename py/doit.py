@@ -182,7 +182,6 @@ plt.plot(f1_list)
 plt.plot(f2_list)
 plt.savefig('media/formant.jpg')
  
-fileSave = 'media/report.pdf'
 documentTitle = 'Report'
 subTitle= 'Audio File:'
 img = 'pitch.jpg'
@@ -274,5 +273,5 @@ with doc.create(Section('Formant Analysis on the selected part')):
 
 # saving the pdf and tex
 
-doc.generate_pdf(filepath='media/PF.report1', clean_tex=True )
+doc.generate_pdf(filepath='media/PF_report', clean_tex=True )
 

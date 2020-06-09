@@ -130,11 +130,21 @@ def SaveAudio(request):
     sub_info = pd.read_csv(subjectInfoSave)
     # add the audio path infomation of the subject
     sub_info['audio_path']=[fileurl]
-    sub_info.to_csv('media/subjectInfo.csv',index=False)
+    #sub_info.to_csv('media/subjectInfo.csv',index=False)
 
 
-    #Plots
+
+    #Plots and waveinfo
     sound = parselmouth.Sound(str(fileurl))
+    StartTime=sound.xmin
+    StartTime = round(StartTime,3)
+    EndTime=sound.xmax
+    EndTime = round(EndTime,3)
+
+    sub_info['audio_ST']=[str(StartTime)]
+    sub_info['audio_ET']=[str(EndTime)]
+    sub_info.to_csv('media/subjectInfo.csv',index=False)    
+
     plt.figure()
     plt.plot(sound.xs(), sound.values.T[:,0])
     plt.xlim([sound.xmin, sound.xmax])
@@ -183,8 +193,8 @@ def wavForm(request):
 
     if EndTime>sound.xmax:
         EndTime=round(sound.xmax,3)
-    if EndTime<StartTime:
-        return render(request, 'upload.html', {'wave_trim':'yes','error_msg':'yes'})
+    #if EndTime<StartTime:
+     #   return render(request, 'upload.html', {'wave_trim':'yes','error_msg':'yes'})
 
     # add the audio start and end time infomation of the subject
     sub_info['audio_ST']=[str(StartTime)]
