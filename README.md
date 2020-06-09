@@ -1,7 +1,19 @@
 # AudioProcessor
 
-Hosting the Django based webapp on Heroku
-link: https://audp-test.herokuapp.com/
+## Setup Instructions:
 
-For useful git commands
-link: https://docs.google.com/document/d/1FCx5iysU6kgyBGPDLWDFQaNanXk_PNplLrIxsr2DVZA/edit?usp=sharing
+ - Install Python3
+ - Install [Django](https://docs.djangoproject.com/en/3.0/intro/install/)
+- Install pip requirements : `pip install -r requirements.txt`
+- Local Django server: `Django manage.py` 
+
+## GIT
+
+For useful git commands:
+https://docs.google.com/document/d/1FCx5iysU6kgyBGPDLWDFQaNanXk_PNplLrIxsr2DVZA/edit?usp=sharing
+
+ - Create a branch in your name to work
+ - **Don't deploy to master branch directly**
+
+## Production
+Hosted on Heroku:  https://audp-test.herokuapp.com/
