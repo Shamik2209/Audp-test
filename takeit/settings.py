@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '_k)%f^l9gkyv29rv!3je+ys2(ic^l#n4q^_-6=eahlbjrx-3+2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['192.168.1.110','192.168.43.32','0.0.0.0','127.0.0.1', '10.5.50.3', '10.64.26.22']
 MEDIA_URL = '/media/'
@@ -126,11 +126,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-if(not DEBUG):
-    # Activate Django-Heroku.
-    django_heroku.settings(locals());
 
-    # Simplified static file serving.
-    # https://warehouse.python.org/project/whitenoise/
+# Activate Django-Heroku.
+django_heroku.settings(locals());
 
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# Simplified static file serving.
+# https://warehouse.python.org/project/whitenoise/
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
